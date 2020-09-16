@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title> my page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .maindiv {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-color: aqua;
+        }
+        .centerdiv{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        h1{
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ecfof1;
+            text-shadow : 1px 2px 3px #2980b9;
+            font-size:2.1rem;
+        }
+        h2{
+            text-align: center;
+        }
+        textarea{
+            background-color: rgb(64, 78, 199);
+            box-shadow: 0 0 1px rgb(8, 9, 20);
+            border-radius: 10px 10px 0 0;
+            color:white;
+            font-size: 1.3rem;
+        }
+        .mainbtn{
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 5px dotted #2980b9;
+            background: #ecfof1;
+            font-size:1rem;        }
+    </style>
+</head>
+
+<body>
+    <div class="maindiv">
+        <div class="centerdiv">
+            <h1>
+                Welcome To Typing Speed Test
+            </h1>
+            <h2 id="msg"></h2>
+            <br>
+            <textarea id="mywords" rows="10" cols="100" placeholder="remember , be nice"></textarea>
+            <br>
+            <button id="btn" class="mainbtn">start </button>
+        </div>
+    </div>
+
+<script>
+    const setofwords = [
+        " kazi musharraf",
+        " welcome to my speed test ",
+        " this is testing your limit"
+    ];
+    const msg = document.getElementById('msg');
+    const typewords = document.getElementById('mywords');
+    const btn = document.getElementById('btn');
+
+    let starttime ,endtime ;
+
+    const playgame = () =>{
+        let randomnumber = Math.floor(Math.random()*setofwords.length);
+        msg.innerText = setofwords[randomnumber];
+        let date = new Date();
+        starttime = date.getTime();
+        btn.innerText = "done";
+    }
+    const endplay = () =>{
+        let date = new Date();
+        endtime = date.getTime();
+        let totaltime = ((endtime-starttime)/1000);
+        console.log(totaltime);
+
+        let totalstr = typewords.value;
+        let wordcount = wordcounter(totalstr);
+
+        let speed = Math.round((wordcount / totaltime) * 60);
+
+        let finalmsg = " you speeed is " +speed+ "words per minute" ;
+
+        finalmsg += comaprewords(msg.innerText,totalstr);
+
+        msg.innerText = finalmsg;
+    }
+    const comaprewords = (str1,str2) =>{
+        let words1 = str1.split(" ");
+        let words2 = str2.split(" ");
+        let cnt = 0;
+
+        words1.forEach(function (item,index){
+            if(item==words2[index]) {
+                cnt++;
+            }
+        })
+        let errorwords = (words1.length - cnt);
+        return (cnt + " correct out of " + words1.length + " words and the total number of error are "+ errorwords + ".");
+        
+    }
+    const wordcounter = (str) =>{
+        let response = str.split(" ").length;
+        console.log(response);
+        return response;
+    }
+
+    btn.addEventListener('click',function(){
+        if(this.innerText == 'start'){
+            typewords.disabled = false;
+            playgame();
+        }
+        else if(this.innerText == "done"){
+            typewords.disabled =true;
+            btn.innerText = 'start';
+            endplay();
+        }
+    })
+
+
+</script>
+</body>
+
+</html>
