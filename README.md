@@ -1,4 +1,4 @@
 # typing12
 a typingwebsite
 
-https://mktech23.github.io/typing12/ 
+https://mk-knight23.github.io/typing12/
