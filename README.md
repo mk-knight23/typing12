@@ -1,5 +1,4 @@
 # typing12
-a typingwebsite
 
-a new commit to add
-https://mk-knight23.github.io/typing12/
+A Typing Website With Set of Sentences
+
