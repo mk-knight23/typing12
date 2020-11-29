@@ -1,7 +1,3 @@
-# typing12
+# typing WEBSITE
 
-A Typing Website With Set of Sentences
-
-https://typing12.vercel.app/
-
-- [Car](https://github.com/mk-knight23/mk3)
+# DEMO : https://typing12.vercel.app/
