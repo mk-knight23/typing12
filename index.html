@@ -13,43 +13,50 @@
             box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
         }
+
         .maindiv {
             width: 100%;
             height: 100vh;
             position: relative;
             background-color: aqua;
         }
-        .centerdiv{
+
+        .centerdiv {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
         }
-        h1{
+
+        h1 {
             text-transform: capitalize;
             text-align: center;
             margin-bottom: 30px;
-            color: #ecfof1;
-            text-shadow : 1px 2px 3px #2980b9;
-            font-size:2.1rem;
+            color: red;
+            text-shadow: 1px 2px 3px #2980b9;
+            font-size: 2.1rem;
         }
-        h2{
+
+        h2 {
             text-align: center;
         }
-        textarea{
+
+        textarea {
             background-color: rgb(64, 78, 199);
             box-shadow: 0 0 1px rgb(8, 9, 20);
             border-radius: 10px 10px 0 0;
-            color:white;
+            color: white;
             font-size: 1.3rem;
         }
-        .mainbtn{
+
+        .mainbtn {
             padding: 10px 20px;
             border-radius: 20px;
             border: 5px dotted #2980b9;
-            background: #ecfof1;
-            font-size:1rem;        }
+            background: orange;
+            font-size: 1rem;
+        }
     </style>
 </head>
 
@@ -67,126 +74,131 @@
         </div>
     </div>
 
-<script>
-    const setofwords = [
-        " kazi musharraf",
-        " welcome to my speed test ",
-        " this is testing your limit",
-        "1. The quick brown fox jumps over the lazy dog.",
-"2. My Mum tries to be cool by saying that she likes all the same things that I do.",
+    <script>
+        const setofwords = [
+            " kazi musharraf",
 
-"3. If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?",
+            " welcome to my speed test ",
 
-"4. A purple pig and a green donkey flew a kite in the middle of the night and ended up sunburnt.",
+            " this is testing your limit",
 
-"5. What was the person thinking when they discovered cow’s milk was fine for human consumption… and why did they do it in the first place!?",
+            " The quick brown fox jumps over the lazy dog.",
 
-"6. Last Friday in three week’s time I saw a spotted striped blue worm shake hands with a legless lizard.",
+            " My Mum tries to be cool by saying that she likes all the same things that I do.",
 
-"7. Wednesday is hump day, but has anyone asked the camel if he’s happy about it?",
+            " If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?",
 
-"8. If Purple People Eaters are real… where do they find purple people to eat?",
+            " A purple pig and a green donkey flew a kite in the middle of the night and ended up sunburnt.",
 
-"9. A song can make or ruin a person’s day if they let it get to them.",
+            " What was the person thinking when they discovered cow’s milk was fine for human consumption… and why did they do it in the first place!?",
 
-"10. Sometimes it is better to just walk away from things and go back to them later when you’re in a better frame of mind.",
+            " Last Friday in three week’s time I saw a spotted striped blue worm shake hands with a legless lizard.",
 
-"11. Writing a list of random sentences is harder than I initially thought it would be.",
+            " Wednesday is hump day, but has anyone asked the camel if he’s happy about it?",
 
-"12. Where do random thoughts come from?",
+            " If Purple People Eaters are real… where do they find purple people to eat?",
 
-"13. Lets all be unique together until we realise we are all the same.",
+            " A song can make or ruin a person’s day if they let it get to them.",
 
-"14. I will never be this young again. Ever. Oh damn… I just got older.",
+            " Sometimes it is better to just walk away from things and go back to them later when you’re in a better frame of mind.",
 
-"15. If I don’t like something, I’ll stay away from it.",
+            " Writing a list of random sentences is harder than I initially thought it would be.",
 
-"16. I love eating toasted cheese and tuna sandwiches.",
+            " Where do random thoughts come from?",
 
-"17. If you like tuna and tomato sauce- try combining the two. It’s really not as bad as it sounds.",
+            " Lets all be unique together until we realise we are all the same.",
 
-"18. Someone I know recently combined Maple Syrup & buttered Popcorn thinking it would taste like caramel popcorn. It didn’t and they don’t recommend anyone else do it either.",
+            " I will never be this young again. Ever. Oh damn… I just got older.",
 
-"19. Sometimes, all you need to do is completely make an ass of yourself and laugh it off to realise that life isn’t so bad after all.",
+            " If I don’t like something, I’ll stay away from it.",
 
-"20. When I was little I had a car door slammed shut on my hand. I still remember it quite vividly.",
+            " I love eating toasted cheese and tuna sandwiches.",
 
-"21. The clock within this blog and the clock on my laptop are 1 hour different from each other.",
+            " If you like tuna and tomato sauce- try combining the two. It’s really not as bad as it sounds.",
 
-"22. I want to buy a onesie… but know it won’t suit me.",
+            " Someone I know recently combined Maple Syrup & buttered Popcorn thinking it would taste like caramel popcorn. It didn’t and they don’t recommend anyone else do it either.",
 
-"23. I was very proud of my nickname throughout high school but today- I couldn’t be any different to what my nickname was.",
+            " Sometimes, all you need to do is completely make an ass of yourself and laugh it off to realise that life isn’t so bad after all.",
 
-"24. I currently have 4 windows open up… and I don’t know why.",
+            " When I was little I had a car door slammed shut on my hand. I still remember it quite vividly.",
 
-"25. I often see the time 11:11 or 12:34 on clocks.",
+            " The clock within this blog and the clock on my laptop are 1 hour different from each other.",
 
-"26. This is the last random sentence I will be writing and I am going to stop mid-sent"
-    ];
-    const msg = document.getElementById('msg');
-    const typewords = document.getElementById('mywords');
-    const btn = document.getElementById('btn');
+            " I want to buy a onesie… but know it won’t suit me.",
 
-    let starttime ,endtime ;
+            " I was very proud of my nickname throughout high school but today- I couldn’t be any different to what my nickname was.",
 
-    const playgame = () =>{
-        let randomnumber = Math.floor(Math.random()*setofwords.length);
-        msg.innerText = setofwords[randomnumber];
-        let date = new Date();
-        starttime = date.getTime();
-        btn.innerText = "done";
-    }
-    const endplay = () =>{
-        let date = new Date();
-        endtime = date.getTime();
-        let totaltime = ((endtime-starttime)/1000);
-        console.log(totaltime);
+            " I currently have 4 windows open up… and I don’t know why.",
 
-        let totalstr = typewords.value;
-        let wordcount = wordcounter(totalstr);
+            " I often see the time 11:11 or 12:34 on clocks.",
 
-        let speed = Math.round((wordcount / totaltime) * 60);
+            " This is the last random sentence I will be writing and I am going to stop mid-sent"
+        ];
 
-        let finalmsg = " you speeed is " +speed+ "words per minute" ;
+        const msg = document.getElementById('msg');
+        const typewords = document.getElementById('mywords');
+        const btn = document.getElementById('btn');
 
-        finalmsg += comaprewords(msg.innerText,totalstr);
+        let starttime, endtime;
 
-        msg.innerText = finalmsg;
-    }
-    const comaprewords = (str1,str2) =>{
-        let words1 = str1.split(" ");
-        let words2 = str2.split(" ");
-        let cnt = 0;
+        const playgame = () => {
+            let randomnumber = Math.floor(Math.random() * setofwords.length);
+            msg.innerText = setofwords[randomnumber];
+            let date = new Date();
+            starttime = date.getTime();
+            btn.innerText = "done";
+        }
+        const endplay = () => {
+            let date = new Date();
+            endtime = date.getTime();
+            let totaltime = ((endtime - starttime) / 1000);
+            console.log(totaltime);
 
-        words1.forEach(function (item,index){
-            if(item==words2[index]) {
-                cnt++;
+            let totalstr = typewords.value;
+            let wordcount = wordcounter(totalstr);
+
+            let speed = Math.round((wordcount / totaltime) * 60);
+
+            let finalmsg = " you speeed is " + speed + "words per minute";
+
+            finalmsg += comaprewords(msg.innerText, totalstr);
+
+            msg.innerText = finalmsg;
+        }
+        const comaprewords = (str1, str2) => {
+            let words1 = str1.split(" ");
+            let words2 = str2.split(" ");
+            let cnt = 0;
+
+            words1.forEach(function (item, index) {
+                if (item == words2[index]) {
+                    cnt++;
+                }
+            })
+            let errorwords = (words1.length - cnt);
+            return (cnt + " correct out of " + words1.length + " words and the total number of error are " + errorwords + ".");
+
+        }
+        const wordcounter = (str) => {
+            let response = str.split(" ").length;
+            console.log(response);
+            return response;
+        }
+
+        btn.addEventListener('click', function () {
+            if (this.innerText == 'start') {
+                typewords.disabled = false;
+                playgame();
+            }
+            else if (this.innerText == "done") {
+                typewords.disabled = true;
+                btn.innerText = 'start';
+                endplay();
             }
         })
-        let errorwords = (words1.length - cnt);
-        return (cnt + " correct out of " + words1.length + " words and the total number of error are "+ errorwords + ".");
-        
-    }
-    const wordcounter = (str) =>{
-        let response = str.split(" ").length;
-        console.log(response);
-        return response;
-    }
-
-    btn.addEventListener('click',function(){
-        if(this.innerText == 'start'){
-            typewords.disabled = false;
-            playgame();
-        }
-        else if(this.innerText == "done"){
-            typewords.disabled =true;
-            btn.innerText = 'start';
-            endplay();
-        }
-    })
 
 
-</script>
+    </script>
 </body>
 
 </html>
