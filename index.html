@@ -1,208 +1,124 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title> Kazi Typing Website</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <title>Typing Speed Test</title>
 
-        .maindiv {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            background-color: aqua;
-        }
+  <style>
+    /* CSS reset and styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; 
+    }
 
-        .centerdiv {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-        h1 {
-            text-transform: capitalize;
-            text-align: center;
-            margin-bottom: 30px;
-            color: red;
-            text-shadow: 1px 2px 3px #2980b9;
-            font-size: 2.1rem;
-        }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+    }
 
-        h2 {
-            text-align: center;
-        }
+    h1 {
+      background: #2980b9;
+      color: white;
+      padding: 20px;
+      text-align: center; 
+    }
 
-        textarea {
-            background-color: rgb(64, 78, 199);
-            box-shadow: 0 0 1px rgb(8, 9, 20);
-            border-radius: 10px 10px 0 0;
-            color: white;
-            font-size: 1.3rem;
-        }
+    textarea {
+      width: 100%;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      resize: none;
+    }
 
-        .mainbtn {
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 5px dotted #2980b9;
-            background: orange;
-            font-size: 1rem;
-        }
-    </style>
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    #message {
+      margin: 10px 0 20px;
+      text-align: center;
+    }
+
+  </style>
+
 </head>
 
 <body>
-    <div class="maindiv">
-        <div class="centerdiv">
-            <h1>
-                Welcome To Typing Speed Test
-            </h1>
-            <h2 id="msg"></h2>
-            <br>
-            <textarea id="mywords" rows="10" cols="100" placeholder="remember , be nice"></textarea>
-            <br>
-            <button id="btn" class="mainbtn">start </button>
-        </div>
-    </div>
 
-    <script>
-        const setofwords = [
-            " kazi musharraf",
+  <div class="container">
 
-            " welcome to my speed test ",
-            
-            " welcome to 1st contribution ",
+    <h1>Typing Speed Test</h1>
 
-            " this is testing your limit",
+    <p id="message"></p>
 
-            " The quick brown fox jumps over the lazy dog.",
+    <textarea id="words" rows="8" cols="40" disabled></textarea>
 
-            " My Mum tries to be cool by saying that she likes all the same things that I do.",
+    <button id="start">Start Test</button>
 
-            " If the Easter Bunny and the Tooth Fairy had babies would they take your teeth and leave chocolate for you?",
+  </div>
 
-            " A purple pig and a green donkey flew a kite in the middle of the night and ended up sunburnt.",
+  <script>
+    const words = [
+      "Hello", 
+      "Welcome",
+      "to",
+      "the", 
+      "typing",
+      "speed",
+      "test"
+    ];
 
-            " What was the person thinking when they discovered cow’s milk was fine for human consumption… and why did they do it in the first place!?",
+    const msgEl = document.querySelector("#message");
+    const wordsEl = document.querySelector("#words");
+    const startBtn = document.querySelector("#start");  
 
-            " Last Friday in three week’s time I saw a spotted striped blue worm shake hands with a legless lizard.",
+    let startTime, endTime;
 
-            " Wednesday is hump day, but has anyone asked the camel if he’s happy about it?",
+    startBtn.addEventListener("click", startTest);
 
-            " If Purple People Eaters are real… where do they find purple people to eat?",
+    function startTest() {
+      const randomWord = words[Math.floor(Math.random() * words.length)];
+      msgEl.innerText = randomWord;
+      wordsEl.disabled = false;
+      wordsEl.value = "";
+      wordsEl.focus();
+      startTime = new Date().getTime();
+    }
 
-            " A song can make or ruin a person’s day if they let it get to them.",
+    function endTest() {
+      endTime = new Date().getTime();
+      const totalTime = (endTime - startTime) / 1000;
+      const wordCount = wordsEl.value.split(" ").length; 
+      const speed = Math.round(wordCount / totalTime * 60);
 
-            " Sometimes it is better to just walk away from things and go back to them later when you’re in a better frame of mind.",
+      const msg = `You typed at ${speed} words per minute`;
+      
+      wordsEl.disabled = true;
+      startBtn.innerText = "Start";      
+      msgEl.innerText = msg;
+    }
 
-            " Writing a list of random sentences is harder than I initially thought it would be.",
+    wordsEl.addEventListener("input", () => {
+      const typedWord = wordsEl.value; 
+      if(typedWord === randomWord) {
+        endTest();
+      }
+    });
+  </script>
 
-            " Where do random thoughts come from?",
-
-            " Lets all be unique together until we realise we are all the same.",
-
-            " I will never be this young again. Ever. Oh damn… I just got older.",
-
-            " If I don’t like something, I’ll stay away from it.",
-
-            " I love eating toasted cheese and tuna sandwiches.",
-
-            " If you like tuna and tomato sauce- try combining the two. It’s really not as bad as it sounds.",
-
-            " Someone I know recently combined Maple Syrup & buttered Popcorn thinking it would taste like caramel popcorn. It didn’t and they don’t recommend anyone else do it either.",
-
-            " Sometimes, all you need to do is completely make an ass of yourself and laugh it off to realise that life isn’t so bad after all.",
-
-            " When I was little I had a car door slammed shut on my hand. I still remember it quite vividly.",
-
-            " The clock within this blog and the clock on my laptop are 1 hour different from each other.",
-
-            " I want to buy a onesie… but know it won’t suit me.",
-
-            " I was very proud of my nickname throughout high school but today- I couldn’t be any different to what my nickname was.",
-
-            " I currently have 4 windows open up… and I don’t know why.",
-
-            " I often see the time 11:11 or 12:34 on clocks.",
-
-            " This is the last random sentence I will be writing and I am going to stop mid-sent"
-            
-             " welcome to 2nd contribution ",
-        ];
-
-        const msg = document.getElementById('msg');
-        const typewords = document.getElementById('mywords');
-        const btn = document.getElementById('btn');
-
-        let starttime, endtime;
-
-        const playgame = () => {
-            let randomnumber = Math.floor(Math.random() * setofwords.length);
-            msg.innerText = setofwords[randomnumber];
-            let date = new Date();
-            starttime = date.getTime();
-            btn.innerText = "done";
-        }
-        const endplay = () => {
-            let date = new Date();
-            endtime = date.getTime();
-            let totaltime = ((endtime - starttime) / 1000);
-            console.log(totaltime);
-
-            let totalstr = typewords.value;
-            let wordcount = wordcounter(totalstr);
-
-            let speed = Math.round((wordcount / totaltime) * 60);
-
-            let finalmsg = " you speeed is " + speed + "words per minute";
-
-            finalmsg += comaprewords(msg.innerText, totalstr);
-
-            msg.innerText = finalmsg;
-        }
-        const comaprewords = (str1, str2) => {
-            let words1 = str1.split(" ");
-            let words2 = str2.split(" ");
-            let cnt = 0;
-
-            words1.forEach(function (item, index) {
-                if (item == words2[index]) {
-                    cnt++;
-                }
-            })
-            let errorwords = (words1.length - cnt);
-            return (cnt + " correct out of " + words1.length + " words and the total number of error are " + errorwords + ".");
-
-        }
-        const wordcounter = (str) => {
-            let response = str.split(" ").length;
-            console.log(response);
-            return response;
-        }
-
-        btn.addEventListener('click', function () {
-            if (this.innerText == 'start') {
-                typewords.disabled = false;
-                playgame();
-            }
-            else if (this.innerText == "done") {
-                typewords.disabled = true;
-                btn.innerText = 'start';
-                endplay();
-            }
-        })
-
-
-    </script>
 </body>
-
 </html>
